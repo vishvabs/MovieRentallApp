@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieRentallApp.Views.MovieDetailPage"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Image Source="{Binding ImgUrl}"/>
+            <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
+            <Label Text="{Binding Description}" FontSize="Small"/>
+            <StackLayout>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Genres - " FontAttributes="Bold"/>
+                            <Span Text="{Binding Genres}"  />
+                            
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Cast - " FontAttributes="Bold"/>
+                            <Span Text="{Binding Cast}"  />
+                            
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Release Date - " FontAttributes="Bold"/>
+                            <Span Text="{Binding ReleaseDate}"  />
+                           
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Duration - " FontAttributes="Bold"/>
+                            <Span Text="{Binding RunTime}"  />
+                            <Span Text=" min"  />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Streaming Cost (1s) - " FontAttributes="Bold"/>
+                            <Span Text="{Binding Price}"  />
+                            <Span Text="£"  />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rental per day - " FontAttributes="Bold"/>
+                            <Span Text="{Binding Rental}"  />
+                            <Span Text="£"  />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+
+
+
+            <StackLayout VerticalOptions="EndAndExpand">
+            <Button Text="Add To Cart" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

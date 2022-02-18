@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieRentallApp.Views.MoviesPage"
+               Title="{Binding Title}"
+             xmlns:local="clr-namespace:MovieRentallApp.ViewModels"  
+             xmlns:model="clr-namespace:MovieRentallApp.Models" x:DataType="local:MoviesViewModel"
+             x:Name="BrowseMoviesPage"
+             BackgroundColor="#f3f3f3"
+             >
+    
+  
+
+    <RefreshView x:DataType="local:MoviesViewModel" Command="{Binding LoadMoviesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Movies}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    
+                    <StackLayout Padding="5" x:DataType="model:Movie" VerticalOptions="FillAndExpand">
+                        <Grid Padding="5" BackgroundColor="#ffffff">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ImgUrl}" Grid.RowSpan="2"  
+                                 HeightRequest = "100"
+                                 MinimumHeightRequest = "100"
+                                    VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                  
+                                   ></Image>
+                            <StackLayout Grid.Column="1" Grid.Row="0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="15" />
+                                <Label  Text="{Binding Description}" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+
+                                <Label FontSize="13">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Generas - " FontAttributes="Bold" FontSize="13"/>
+                                            <Span Text="{Binding Genres}"  />
+                                           
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="13">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Release Date - " FontAttributes="Bold" FontSize="13" />
+                                            <Span Text="{Binding ReleaseDate}"  />
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            
+                        </Grid>
+    
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
