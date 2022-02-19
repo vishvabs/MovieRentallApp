@@ -15,7 +15,7 @@ namespace MovieRentallApp.Services
             items = new List<Movie>()
             {
                 new Movie { Id = Guid.NewGuid().ToString(), Name = "Titanic", Description="This is an Titanic description.This is an titanic description" , Cast="cast" , Genres="Romantic" , Price=0.20 , ImgUrl="computers.jpg" , RunTime = 72.35 , ReleaseDate = "2021-12-12" , Rental = 20.00  },
-                 new Movie { Id = Guid.NewGuid().ToString(), Name = "Fast And Furious", Description="Fast And Furious is a amazing action movie. This is an item description" , Cast="cast" , Genres="Action" , Price=0.30 , ImgUrl="imges.jpg" , RunTime = 84.10 , ReleaseDate = "2021-12-12" , Rental = 30.00  },
+                 new Movie { Id = Guid.NewGuid().ToString(), Name = "Fast And Furious F11", Description="Fast And Furious is a amazing action movie. This is an item description" , Cast="cast" , Genres="Action" , Price=0.30 , ImgUrl="imges.jpg" , RunTime = 84.10 , ReleaseDate = "2021-12-12" , Rental = 30.00  },
 
             };
         }
